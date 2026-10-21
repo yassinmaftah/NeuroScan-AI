@@ -8,3 +8,4 @@ seaborn
 pillow
 opencv-python-headless
 mlflow==2.17.2
+jupyterlab
