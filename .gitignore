@@ -1,0 +1,11 @@
+.venv/
+data/
+models/
+reports/
+__pycache__/
+*.pyc
+.env
+runs/
+*.pt
+*.keras
+*.h5
