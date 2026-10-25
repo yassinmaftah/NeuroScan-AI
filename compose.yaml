@@ -1,0 +1,23 @@
+services:
+  notebook-tf:
+    build:
+      context: .
+      args:
+        REQ: requirements-tf.txt
+    image: neuroscan-tf
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./src:/app/src
+      - ./reports:/app/reports
+      - ./notebooks:/app/notebooks
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --IdentityProvider.token=neuroscan --ServerApp.disable_check_xsrf=True
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
