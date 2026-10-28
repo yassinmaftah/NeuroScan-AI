@@ -21,3 +21,27 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    
+  notebook-yolo:
+    build:
+      context: .
+      args:
+        REQ: requirements-yolo.txt
+    image: neuroscan-yolo
+    ports:
+      - "8889:8888"
+    shm_size: "4gb"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./src:/app/src
+      - ./reports:/app/reports
+      - ./notebooks:/app/notebooks
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --IdentityProvider.token=neuroscan --ServerApp.disable_check_xsrf=True
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
