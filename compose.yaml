@@ -56,4 +56,25 @@ services:
     volumes:
       - ./mlruns:/mlflow
     command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --artifacts-destination /mlflow/artifacts --serve-artifacts
-  
+
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    image: neuroscan-airflow
+    user: "0:0"
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      HOST_PROJECT_DIR: ${HOST_PROJECT_DIR}
+    volumes:
+      - airflow_home:/opt/airflow
+      - ./airflow/dags:/opt/airflow/dags
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: standalone
+    depends_on:
+      - mlflow
+
+volumes:
+  airflow_home:
