@@ -21,7 +21,7 @@ def docker_run(image, command, gpu=False, shm=None):
         parts.append("--gpus all")
     if shm:
         parts.append("--shm-size " + shm)
-    for folder in ["data", "models", "src", "reports"]:
+    for folder in ["data", "models", "src", "reports", "weights"]:
         parts.append("-v " + HOST + "/" + folder + ":/app/" + folder)
     parts.append(image)
     parts.append(command)

@@ -35,7 +35,14 @@ def load_data():
 
 
 def build_model(num_classes):
-    base_model = InceptionV3(weights="imagenet", include_top=False, input_shape=(299, 299, 3))
+    weights_file = "/app/weights/inception_v3_notop.weights.h5"
+    if not os.path.exists(weights_file):
+        raise FileNotFoundError("Missing " + weights_file + ": download the weights first")
+
+    base_model = InceptionV3(weights=None, include_top=False, input_shape=(299, 299, 3))
+    base_model.load_weights(weights_file)
+    log.info("Loaded ImageNet weights from %s", weights_file)
+    
     base_model.trainable = False
 
     model = keras.Sequential([

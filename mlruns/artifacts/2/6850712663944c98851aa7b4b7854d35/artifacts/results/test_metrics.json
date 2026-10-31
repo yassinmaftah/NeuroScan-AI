@@ -1,0 +1,10 @@
+{
+  "test_accuracy": 0.9316888045540797,
+  "test_precision_macro": 0.9293750284328911,
+  "test_recall_macro": 0.9285881343045086,
+  "test_f1_macro": 0.9278106828688438,
+  "test_recall_glioma": 0.9711934156378601,
+  "test_recall_meningioma": 0.8137651821862348,
+  "test_recall_notumor": 0.99,
+  "test_recall_pituitary": 0.9393939393939394
+}

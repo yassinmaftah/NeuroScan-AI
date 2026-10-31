@@ -1,0 +1,14 @@
+{
+  "test_precision": 0.6466279922095274,
+  "test_recall": 0.6445714382370914,
+  "test_mAP50": 0.706344935215117,
+  "test_mAP50_95": 0.39481255190827824,
+  "test_recall_Glioma": 0.5720720720720721,
+  "test_mAP50_Glioma": 0.4629574373417188,
+  "test_recall_Meningioma": 0.6182572614107884,
+  "test_mAP50_Meningioma": 0.7131145205721247,
+  "test_recall_NoTumor": 0.9669421487603306,
+  "test_mAP50_NoTumor": 0.8744107711330393,
+  "test_recall_Pituitary": 0.42101427070517417,
+  "test_mAP50_Pituitary": 0.7748970118135847
+}

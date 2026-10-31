@@ -27,7 +27,9 @@ def main():
 
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    model = YOLO("yolov8s.pt")
+    if not os.path.exists("/app/weights/yolov8s.pt"):
+        raise FileNotFoundError("Missing /app/weights/yolov8s.pt: download the weights first")
+    model = YOLO("/app/weights/yolov8s.pt")
     log.info("Training: %d epochs, batch %d, image size %d", args.epochs, args.batch, args.imgsz)
 
     model.train(

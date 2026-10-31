@@ -9,3 +9,5 @@ runs/
 *.pt
 *.keras
 *.h5
+
+weights/
