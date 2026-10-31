@@ -10,6 +10,7 @@ WORKDIR /app
 
 COPY ${REQ} requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir fastapi==0.115.5 uvicorn==0.32.1 python-multipart==0.0.17
 
 COPY src/ src/
 

@@ -78,5 +78,14 @@ services:
     depends_on:
       - mlflow
 
+  api-classification:
+    image: neuroscan-tf
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./models:/app/models
+      - ./api:/app/api
+    command: uvicorn api.classification_api:app --host 0.0.0.0 --port 8000
+
 volumes:
   airflow_home:
