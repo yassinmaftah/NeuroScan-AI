@@ -1,0 +1,6 @@
+path: /app/data/processed/detection_airflow
+train: images/train
+val: images/valid
+test: images/test
+nc: 4
+names: ['Glioma', 'Meningioma', 'No Tumor', 'Pituitary']
