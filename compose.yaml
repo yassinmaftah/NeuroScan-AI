@@ -95,5 +95,23 @@ services:
       - ./models:/app/models
       - ./api:/app/api
     command: uvicorn api.detection_api:app --host 0.0.0.0 --port 8000
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    image: neuroscan-streamlit
+    ports:
+      - "8502:8501"
+    environment:
+      CLASSIFICATION_API_URL: http://api-classification:8000
+      DETECTION_API_URL: http://api-detection:8000
+    volumes:
+      - ./ui:/app/ui
+    command: streamlit run ui/app.py --server.port=8501 --server.address=0.0.0.0
+    depends_on:
+      - api-classification
+      - api-detection
+      
 volumes:
   airflow_home:
